@@ -10,7 +10,7 @@ the FastMCP game server is mounted in-process inside the API server at `/mcp`
 
 - **`server/`** — Python FastAPI agent backend (:8000). Owns Agora token
   generation, the Dungeon Master agent session lifecycle, and the FastMCP game
-  server (mounted at `/mcp`). SDK: `agora-agents>=2.0.0` (`import agora_agent`).
+  server (mounted at `/mcp`). SDK: `agora-agents>=2.3.0` (`import agora_agent`).
 - **`server/src/mcp_server.py`** — FastMCP wrapper exposing 6 game tools.
   Mounted in-process; Agora cloud calls it at `<public-url>/mcp`.
 - **`server/src/game.py`** — pure game engine (SQLite, no MCP dependency, fully
