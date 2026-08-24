@@ -18,11 +18,12 @@ and the DM narrates it. There is no `llm/` endpoint in this recipe. STT
 Use the repo-root `README.md` for the full local flow (`bun run dev`). To work
 on this module directly:
 
-```bash
-cd server
-python3 -m venv venv && source venv/bin/activate
-pip install -r requirements.txt
-MCP_ENDPOINT=https://<your-tunnel>/mcp python src/server.py
+The root commands below select the correct virtualenv interpreter on macOS,
+Linux, and Windows, so activation is not required:
+
+```shell
+bun run setup:server
+bun run backend
 ```
 
 ## Environment
@@ -32,7 +33,7 @@ MCP_ENDPOINT=https://<your-tunnel>/mcp python src/server.py
 - `AGORA_APP_ID`, `AGORA_APP_CERTIFICATE` — Agora project credentials.
 - `MCP_ENDPOINT` — the **public** URL of your `mcp/` game server (e.g.
   `https://<tunnel>/mcp`). Agora cloud calls this directly, so it cannot be
-  `localhost`. Expose the `mcp/` server on port 8001 via ngrok first.
+  `localhost`. Expose the backend on port 8000 via ngrok first.
 
 Optional:
 - `OPENAI_MODEL` (default `gpt-4o-mini`) — model name for the managed Dungeon
@@ -48,7 +49,7 @@ Optional:
 - `POST /startAgent` — start a Dungeon Master agent session
 - `POST /stopAgent` — stop an agent session
 
-The repo-root `bun run verify:web:api` exercises these routes through the Next
+The repo-root `bun run verify:local:fastapi` exercises these routes through the Next
 proxy using a fake agent (`scripts/run_fake_server.py`), so no live Agora
 session is required.
 

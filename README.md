@@ -29,6 +29,10 @@ mounted inside the API server — Agora cloud calls it directly at `MCP_ENDPOINT
 - [ngrok](https://ngrok.com/) — the `/mcp` path must be publicly reachable so
   Agora cloud can call it
 
+The same commands work on macOS, Linux, and Windows. On macOS/Linux, setup uses
+`python3`; on Windows, it uses the Python launcher (`py`) or `python`. WSL and
+virtualenv activation are not required.
+
 ## Run It
 
 ```bash
@@ -106,7 +110,7 @@ bun run doctor           # prerequisite check (no creds needed)
 bun run doctor:local     # + .env.local + credentials + MCP_ENDPOINT checks
 
 bun run verify           # web-only gate (no Agora creds needed)
-bun run verify:local     # full local gate: backend compile + web build
+bun run verify:local     # full local gate: backend compile + smoke tests + web build
 bun run clean            # remove venvs and build artifacts
 ```
 

@@ -95,7 +95,8 @@ bun run verify         # web-only, no creds
 bun run verify:local   # full local gate
 ```
 
-Narrower checks: `bun run verify:backend`, `bun run verify:web:proxy`.
+Narrower checks: `bun run verify:backend`, `bun run verify:local:fastapi`,
+`bun run verify:web:proxy`.
 
 ## Done criteria
 
