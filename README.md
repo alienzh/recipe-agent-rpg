@@ -29,6 +29,10 @@ mounted inside the API server — Agora cloud calls it directly at `MCP_ENDPOINT
 - [ngrok](https://ngrok.com/) — the `/mcp` path must be publicly reachable so
   Agora cloud can call it
 
+The same commands work on macOS, Linux, and Windows. On macOS/Linux, setup uses
+`python3`; on Windows, it uses the Python launcher (`py`) or `python`. WSL and
+virtualenv activation are not required.
+
 ## Run It
 
 ```bash
@@ -89,7 +93,7 @@ Backend env file: [`server/.env.example`](server/.env.example).
 | `AGORA_APP_CERTIFICATE` | Yes | — | Agora Console → Project → App Certificate |
 | `MCP_ENDPOINT` | Yes | — | **Public** URL ending in `/mcp` (e.g. `https://<tunnel>/mcp`). Agora cloud calls it; cannot be `localhost`. |
 | `OPENAI_MODEL` | | `gpt-4o-mini` | Model name for the managed Dungeon Master LLM |
-| `RPG_DB_PATH` | | `/tmp/rpg.db` | Path to the SQLite database for game state |
+| `RPG_DB_PATH` | | `rpg.db` | Path to the SQLite database, relative to `server/` or absolute. Docker uses `/tmp/rpg.db`. |
 | `RPG_SEED` | | — | Optional integer seed for deterministic dice (useful for testing) |
 | `OPENAI_API_KEY` | | — | Optional — Agora manages the OpenAI key (keyless by default) |
 | `AGENT_GREETING` | | built-in | Optional override for the DM's opening line |
@@ -106,7 +110,7 @@ bun run doctor           # prerequisite check (no creds needed)
 bun run doctor:local     # + .env.local + credentials + MCP_ENDPOINT checks
 
 bun run verify           # web-only gate (no Agora creds needed)
-bun run verify:local     # full local gate: backend compile + web build
+bun run verify:local     # full local gate: backend compile + smoke tests + web build
 bun run clean            # remove venvs and build artifacts
 ```
 
