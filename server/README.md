@@ -38,6 +38,8 @@ bun run backend
 Optional:
 - `OPENAI_MODEL` (default `gpt-4o-mini`) — model name for the managed Dungeon
   Master LLM.
+- `RPG_DB_PATH` (default `rpg.db`) — SQLite game-state path, relative to the
+  server root or absolute. Docker uses `/tmp/rpg.db`.
 - `OPENAI_API_KEY` — Agora manages the key by default; set this only if you
   want to supply your own.
 - `AGENT_GREETING` — override the DM's opening line.

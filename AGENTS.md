@@ -60,7 +60,7 @@ LLM. One player utterance maps to at most one tool call.
 | --- | --- |
 | `MCP_ENDPOINT` | Required, public ngrok URL ending in `/mcp` (e.g. `https://<tunnel>/mcp`) |
 | `OPENAI_MODEL` | Default `gpt-4o-mini` |
-| `RPG_DB_PATH` | Default `/tmp/rpg.db` |
+| `RPG_DB_PATH` | Default `rpg.db` in `server/`; Docker uses `/tmp/rpg.db` |
 | `RPG_SEED` | Optional integer — deterministic dice for tests |
 | `OPENAI_API_KEY` | Optional — Agora manages it (keyless) |
 

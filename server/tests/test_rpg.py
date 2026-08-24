@@ -1,3 +1,4 @@
+import importlib
 import os, sys, tempfile, random
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 import game  # noqa: E402
@@ -6,6 +7,13 @@ import game  # noqa: E402
 def fresh():
     path = os.path.join(tempfile.mkdtemp(), "rpg.db")
     return game.get_db(path), path
+
+
+def test_default_db_path_is_in_server_root(monkeypatch):
+    monkeypatch.delenv("RPG_DB_PATH", raising=False)
+    importlib.reload(game)
+    expected = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "rpg.db"))
+    assert os.path.normcase(game.DB_PATH) == os.path.normcase(expected)
 
 
 def test_create_sets_class_and_hp():
